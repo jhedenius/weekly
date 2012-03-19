@@ -1,0 +1,4 @@
+[
+{"name":"Read book","type":"Culture","repetitions":1,"creator":"Joachim","public":"true","_id":"40c100f77278d48973b0eab33f9dd65e"},
+{"name":"Work out","type":"Sport","repetitions":3,"creator":"Joachim","public":"false","_id":"40c100f77278d48973b0eab33f9ddaf7"}
+]

@@ -1,0 +1,17 @@
+[
+    {
+        "name": "Read book",
+        "type": "Culture",
+        "repetitions": 1,
+        "creator": "Joachim",
+        "public": "true"
+    },
+    {
+        "name": "Work out",
+        "type": "Sport",
+        "repetitions": 3,
+        "creator": "Joachim",
+        "public": "false"
+    }
+]
+

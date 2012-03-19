@@ -1,0 +1,19 @@
+{
+    "name": "example-app",
+    "version": "0.0.1",
+    "description": "The simplest possible app",
+    "attachments": ["index.html", "users.html", "jquery.js"],
+    "modules": ["lib"],
+    "load": "lib/app",
+    "dependencies": {
+	"session": null,
+        "attachments": null,
+        "modules": null,
+        "properties": null,
+        "db": null,
+	"duality": null,
+	"couchtypes": null,
+	"users": null
+    }
+}
+
