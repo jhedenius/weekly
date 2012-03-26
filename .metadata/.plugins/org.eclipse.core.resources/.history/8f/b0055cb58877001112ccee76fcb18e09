@@ -1,0 +1,17 @@
+var Type = require('kanso/types').Type,
+    fields = require('kanso/fields'),
+    widgets = require('kanso/widgets');
+
+
+exports.blogpost = new Type('task', {
+    fields: {
+        name: fields.string(),
+        user: fields.string(),
+        done: fields.int(),
+        created: fields.createdTime(),
+        amount: fields.int()
+        })
+        
+    }
+});
+

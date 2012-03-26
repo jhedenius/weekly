@@ -1,0 +1,11 @@
+{
+    "name": "weekly",
+    "version": "0.0.1",
+    "description": "The weekly app",
+    "attachments": ["index.html"],
+    "dependencies": {
+        "attachments": null       
+    }
+}
+
+

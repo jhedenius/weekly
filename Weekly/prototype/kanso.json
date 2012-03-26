@@ -1,0 +1,15 @@
+{
+    "name": "weekly",
+    "version": "0.0.1",
+    "description": "The weekly app",
+    "attachments": ["index.html", "jquery.js"],
+    "modules": ["lib"],
+    "load": "lib/app",
+    "dependencies": {
+        "attachments": null,
+        "modules": null,
+        "properties": null,
+        "db": null,
+	"couchtypes": null
+    }
+}

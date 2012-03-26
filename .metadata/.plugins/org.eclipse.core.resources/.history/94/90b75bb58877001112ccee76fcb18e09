@@ -1,0 +1,29 @@
+var templates = require('duality/templates'),
+    fields = require('couchtypes/fields'),
+    Form = require('couchtypes/forms').Form;
+
+exports.update_my_form = function (doc, req) {
+    var form = new Form({first_name: fields.string(), last_name: fields.string()});
+    form.validate(req);
+
+    /** 
+     * We do that because we are not using CouchTypes
+     * CouchTypes takes care of generating a uuid
+     */
+    form.values._id = req.uuid;
+
+ if (form.isValid()) {
+        return [form.values, 'Hello ' + form.values.first_name +', '+ form.values.last_name];
+    }   
+ else {
+        var content = templates.render('form.html', req, {
+            form_title: 'My Form',
+            method: 'POST',
+            action: '/simplestpossibleform/_design/simplestpossibleform/_update/update_my_form',
+            form: form.toHTML(req),
+            input: 'Validate'
+        }); 
+        return [null, {content: content, title: 'My First Form'}];
+    }   
+};
+
