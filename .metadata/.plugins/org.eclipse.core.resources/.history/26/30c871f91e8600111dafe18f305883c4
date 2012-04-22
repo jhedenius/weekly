@@ -1,8 +1,0 @@
-h1 Test
-
-#tasklist_container
-
-script(src='/jquery.js')
-script(src='/underscore-min.js')
-script(src='/backbone-min.js')
-script(type='text/template' src='/tasklist_template.js' id='tasklist_template')
