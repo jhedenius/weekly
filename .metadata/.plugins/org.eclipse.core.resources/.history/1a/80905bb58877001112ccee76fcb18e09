@@ -1,7 +1,0 @@
-exports.blogposts_by_created = {
-    map: function (doc) {
-        if (doc.type === 'blogpost') {
-            emit(doc.created, doc.title);
-        }
-    }
-};
