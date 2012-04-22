@@ -1,0 +1,17 @@
+
+exports.index = function(req, res){
+	res.render('index', { title: "Weekly list" })
+};
+
+exports.list = function(req, res){
+	res.render('index', { title: "Weekly list" })
+};
+
+exports.accounts = function(req, res){
+	res.send('[{"name":"jocke"}, {"name":"Kalle"}]');
+};
+
+exports.user = function(req, res){
+	username = req.param('name', 'jocke');
+	res.render('test', { title: "Test" });
+};

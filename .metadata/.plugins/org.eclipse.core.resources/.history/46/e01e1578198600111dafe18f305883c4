@@ -1,0 +1,34 @@
+alert('Test accounts');
+$(function(){
+
+    //Backbone Model
+    var Task = Backbone.Model.extend({});
+
+    // create a collection
+    var TaskCollection = Backbone.Collection.extend({
+        model: Task,
+        url: '/accounts'
+    });
+    var taskCollection = new TaskCollection();
+    taskCollection.fetch();
+
+	TasklistView = Backbone.View.extend({
+		initialize: function(){
+			this.render();
+		},
+		render: function(){
+			// Compile the template using underscore
+			var template = _.template( $("#tasklist_template").html(), {} );
+			// Load the compiled HTML into the Backbone "el"
+			this.el.html( template );
+		}
+	});
+	
+	var tasklistView = new TasklistView({ el: $("#tasklist_container") });
+});
+
+<script type="text/template" id="tasklist_template">
+	<label>Tasklist</label>
+	<input type="text" id="search_input" />
+	<input type="button" id="search_button" value="Search" />
+</script>

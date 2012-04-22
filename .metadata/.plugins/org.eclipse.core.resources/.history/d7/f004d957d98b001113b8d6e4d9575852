@@ -1,0 +1,8 @@
+<script type='text/template' id='tasklist_template'>	
+	<label>Tasks</label>
+	
+	<% _.each([0,1,2,3,4], function(i) { %>  <p><%= i %></p> <% }); %>
+
+	Task name: <input type='text' id='task_name'/>
+	<input type='button' id='ad_button' value='Creat new task' />
+</script>

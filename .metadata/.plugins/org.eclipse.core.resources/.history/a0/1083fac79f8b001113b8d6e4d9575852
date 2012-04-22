@@ -1,0 +1,58 @@
+
+exports.index = function(req, res){
+	res.render('test', { title: "Test" });
+};
+
+exports.allUsers = function(req, res){
+	var userProvider= new UserProvider('127.0.0.1', 27017);
+	userProvider.findAll(function(error, users){
+		res.send(users);
+	});
+};
+
+exports.createUser = function(req, res){
+	var userProvider= new UserProvider('127.0.0.1', 27017);
+    userProvider.save({
+        title: req.param('title'),
+        body: req.param('body')
+    }, function( error, users) {
+        res.redirect('/users')
+    });
+};
+
+exports.updateUser = function(req, res){
+	var userProvider= new UserProvider('127.0.0.1', 27017);
+    userProvider.save({
+        title: req.param('title'),
+        body: req.param('body')
+    }, function( error, users) {
+        res.redirect('/users')
+    });
+};
+
+exports.allTasks = function(req, res){
+	var taskProvider= new TaskProvider('127.0.0.1', 27017);
+	console.log("all tasks");
+	taskProvider.findAll(function(error, tasks){
+		res.send(error);
+	});
+};
+
+exports.createTask = function(req, res){
+	var taskProvider= new TaskProvider('127.0.0.1', 27017);
+    taskProvider.save({
+		name: req.param('name')
+    }, function( error, docs) {
+        res.redirect('/tasks')
+    });
+};
+
+exports.updateTask = function(req, res){
+	var taskProvider= new TaskProvider('127.0.0.1', 27017);
+    taskProvider.save({
+        title: req.param('title'),
+        body: req.param('body')
+    }, function( error, docs) {
+        res.redirect('/tasks')
+    });
+};

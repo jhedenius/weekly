@@ -1,0 +1,33 @@
+Technology needed to get started with development:
+
+* node.js http://nodejs.org/
+* npm http://npmjs.org/
+* mongodb (http://www.mongodb.org/downloads)
+* express (use npm to install: npm install express -g)
+
+
+The rest of the node dependancies can be intalled by running 
+npm install -d in the folder that package.json resides.
+
+To run the server:
+start mongod: ./mongod (in the mongodb installations bin/ folder)
+node app.js (in the projects root folder, where app.js resides)
+The web server is now running and listening to port 3000.
+
+http://localhost:3000 will give you a simple form where you can add taks.
+http://localhost:3000/tasks will give you a JSON list of all tasks. 
+
+
+Technology stack:
+MongoDB for storage.
+Node.js and Express.js as web server.
+Web server and client communicate in a RESTful way.
+Model is always sent and stored using JSON.
+Jade for server side templating.
+JQuery and Backbone.js for client side MVC logic.
+Underscore.js for client side templating.
+
+
+
+
+

@@ -1,0 +1,22 @@
+h1= title
+#{username}
+
+- var user=username
+
+#tasklist
+	h2 This week
+#list
+	each task in tasks 
+		li= task
+
+#tasklist_container
+
+h2 Last week
+#lastweektasklist
+	each task in tasks
+		li= task
+
+script(src='/jquery.js')
+script(src='/underscore-min.js')
+script(src='/backbone-min.js')
+script(src='/list.js')

@@ -1,0 +1,13 @@
+<script type='text/template' id='tasklist_template'>	
+	<label>Tasks</label>
+	<br/>
+	<% _.each(testarr, function(i) { %>  
+		<p><%= i %></p> <% }); 
+	%>
+	<% _.each(tasks, function(task) { %>  
+		<p><%= task.name %></p> <% }); 
+	%>
+	<br/>
+	Task name: <input type='text' id='task_name'/>
+	<input type='button' id='ad_button' value='Creat new task' />
+</script>

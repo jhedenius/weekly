@@ -1,0 +1,4 @@
+<script type="text/template" id="tasklist_template">
+	<label>Tasks</label>
+	<input type="button" id="search_button" value="Ad" />
+</script>

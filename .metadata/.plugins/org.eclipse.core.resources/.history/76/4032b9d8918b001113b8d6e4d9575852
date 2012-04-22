@@ -1,0 +1,25 @@
+
+exports.index = function(req, res){
+	res.render('index', { title: "Weekly list" })
+};
+
+exports.list = function(req, res){
+	res.render('index', { title: "Weekly list" })
+};
+
+exports.tasks = function(req, res){
+	res.send('[{"name":"jogga"}, {"name":"gå på bio"}]');
+};
+
+exports.createTask = function(req, res){
+	res.send('[{"name":"jogga"}, {"name":"gå på bio"}]');
+};
+
+exports.updateTask = function(req, res){
+	res.send('updated task');
+};
+
+exports.user = function(req, res){
+	username = req.param('name', 'jocke');
+	res.render('test', { title: "Test" });
+};

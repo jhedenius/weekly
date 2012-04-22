@@ -1,0 +1,79 @@
+
+exports.index = function(req, res){
+	res.render('index', { title: "Weekly list" })
+};
+
+exports.allUsers = function(req, res){
+	var userProvider= new UserProvider();
+	userProvider.findAll(function(error, users){
+		res.send(users);
+	});
+};
+
+exports.createUser = function(req, res){
+	var userProvider= new UserProvider();
+    userProvider.save({
+        title: req.param('title'),
+        body: req.param('body')
+    }, function( error, users) {
+        res.redirect('/users')
+    });
+};
+
+exports.updateUser = function(req, res){
+	var userProvider= new UserProvider();
+    userProvider.save({
+        title: req.param('title'),
+        body: req.param('body')
+    }, function( error, users) {
+        res.redirect('/users')
+    });
+};
+
+exports.allTasks = function(req, res){
+	var taskProvider= new TaskProvider();
+	taskProvider.findAll(function(error, tasks){
+		res.send(tasks);
+	});
+};
+
+exports.createTask = function(req, res){
+	var taskProvider= new TaskProvider();
+    taskProvider.save({
+		title: req.param('title'),
+        body: req.param('body')
+    }, function( error, docs) {
+        res.redirect('/tasks')
+    });
+};
+
+exports.updateTask = function(req, res){
+	var taskProvider= new TaskProvider();
+    taskProvider.save({
+        title: req.param('title'),
+        body: req.param('body')
+    }, function( error, docs) {
+        res.redirect('/tasks')
+    });
+};
+
+exports.list = function(req, res){
+	res.render('index', { title: "Weekly list" })
+};
+
+exports.tasks = function(req, res){
+	res.send('[{"name":"jogga"}, {"name":"gå på bio"}]');
+};
+
+exports.createTask = function(req, res){
+	res.send('{"id":17}');
+};
+
+exports.updateTask = function(req, res){
+	res.send('updated task');
+};
+
+exports.user = function(req, res){
+	username = req.param('name', 'jocke');
+	res.render('test', { title: "Test" });
+};

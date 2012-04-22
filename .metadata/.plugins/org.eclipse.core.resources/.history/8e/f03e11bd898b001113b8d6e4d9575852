@@ -1,0 +1,11 @@
+h1 Test
+
+#tasklist_container
+
+include /view_templates/tasklist_template.html
+
+script(src='/jquery.js')
+script(src='/underscore-min.js')
+script(src='/backbone-min.js')
+script(src='/tasklist_template.js')
+

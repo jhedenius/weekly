@@ -1,0 +1,8 @@
+Backbone.sync = function(method, model) {
+  alert(method + ": " + model.url);
+};
+
+var Accounts = new Backbone.Collection;
+Accounts.url = '/accounts';
+
+Accounts.fetch();
