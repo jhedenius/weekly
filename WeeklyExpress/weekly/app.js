@@ -6,6 +6,10 @@
 var express = require('express')
   , routes = require('./routes');
 
+/**
+require.paths.unshift(__dirname + '/../../lib')require.paths.unshift(__dirname + '/../../lib/support/express/lib')
+require.paths.unshift(__dirname + '/../../lib/support/hashlib/build/default')
+*/
 var TaskProvider = require('./taskprovider').TaskProvider;
 var UserProvider = require('./userprovider').UserProvider;
 
@@ -20,6 +24,15 @@ app.configure(function(){
   app.use(express.methodOverride());
   app.use(app.router);
   app.use(express.static(__dirname + '/public'));
+  app.use(MethodOverride)
+  app.use(ContentLength)
+  app.use(Cookie)
+  app.use(Session)
+  app.use(Logger)
+  app.use(require('facebook').Facebook, {
+    apiKey: 'FACEBOOK_API_KEY', 
+    apiSecret: 'FACEBOOK_API_SECRET'
+  })
 });
 
 app.configure('development', function(){
@@ -31,7 +44,6 @@ app.configure('production', function(){
 });
 
 // Routes
-
 app.get('/', routes.index);
 
 app.get('/tasks', routes.allTasks);
@@ -41,6 +53,38 @@ app.put('/task', routes.updateTask);
 app.get('/users', routes.allUsers);
 app.post('/user', routes.createUser);
 app.put('/user', routes.updateUser);
+
+// Called to get information about the current authenticated user
+app.get('/fbSession', function(){
+  var fbSession = this.fbSession()
+  if(fbSession) {
+    // Here would be a nice place to lookup userId in the database
+    // and supply some additional information for the client to use
+  }
+  // The client will only assume authentication was OK if userId exists
+  this.contentType('json')
+  this.halt(200, JSON.stringify(fbSession || {}))
+})
+
+// Called after a successful FB Connect
+app.post('/fbSession', function() {
+  var fbSession = this.fbSession() // Will return null if verification was unsuccesful
+  if(fbSession) {
+    // Now that we have a Facebook Session, we might want to store this new user in the db
+    // Also, in this.params there is additional information about the user (name, pic, first_name, etc)
+    // Note of warning: unlike the data in fbSession, this additional information has not been verified
+    fbSession.first_name = this.params.post['first_name']
+  }
+  this.contentType('json')
+  this.halt(200, JSON.stringify(fbSession || {}))
+})
+
+// Called on Facebook logout
+app.post('/fbLogout', function() {
+  this.fbLogout();
+  this.halt(200, JSON.stringify({}))
+})
+
 
 app.listen(3000);
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);

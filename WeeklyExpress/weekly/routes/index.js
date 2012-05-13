@@ -2,7 +2,7 @@
 
 
 exports.index = function(req, res){
-	res.render('test', { title: "Test" });
+	res.render('login', { title: "Test" });
 };
 
 exports.allUsers = function(req, res){
