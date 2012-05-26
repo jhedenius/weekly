@@ -54,7 +54,11 @@ app.get('/', function( request, response ) {
         request.authenticate(['facebook'], function(error, authenticated) {
             if( authenticated ) {
                 request.session.userId = request.getAuthDetails().user.id;
+                console.log("authenticated: " + request.session.userId);
+            } else {
+            	console.log("not authenticated");
             }
+            console.log("authentication error: " + error);
         });
     } else {
     	var taskProvider = new TaskProvider('127.0.0.1', 27017, function(){
@@ -79,7 +83,7 @@ app.get('/profile', function( request, response ) {
         */
     	console.log("UserId: " + request.session.userId);
     } else {
-    	console.log("profile");
+    	console.log("profile ");
         response.writeHead(303, { 'Location': "/" });
     }
 
