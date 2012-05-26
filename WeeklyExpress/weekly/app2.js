@@ -72,18 +72,17 @@ app.get('/', function( request, response ) {
 });
 
 app.get('/profile', function( request, response ) {
-
     response.contentType('application/json');
+    console.log("profile, userid: " + request.session.userId);
     if( request.session.userId ){
-        /*
-    	UserProvider.findById( request.session.userId, function( error, user ){
-            var userJSON = JSON.stringify( user );
-            response.send( userJSON );
-        });
-        */
-    	console.log("UserId: " + request.session.userId);
+    	var taskProvider = new TaskProvider('127.0.0.1', 27017, function(){
+    		console.log("all tasks");
+    		taskProvider.findAll(function(error, tasks){
+    			console.log("find all done ");
+    			response.send(tasks);
+    		});
+    	});
     } else {
-    	console.log("profile ");
         response.writeHead(303, { 'Location': "/" });
     }
 
@@ -98,5 +97,5 @@ app.get('/logout', function( request, response, params ) {
 
 });
 
-app.listen(3000);
+app.listen(80);
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
