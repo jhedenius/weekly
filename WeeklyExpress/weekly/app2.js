@@ -60,15 +60,16 @@ app.get('/', function( request, response ) {
             }
             console.log("authentication error: " + error);
         });
-    } else {
-    	var taskProvider = new TaskProvider('127.0.0.1', 27017, function(){
-    		console.log("all tasks");
-    		taskProvider.findAll(function(error, tasks){
-    			console.log("find all done ");
-    			response.send(tasks);
-    		});
-    	});	
     }
+    response.contentType('application/json');
+	var taskProvider = new TaskProvider('127.0.0.1', 27017, function(){
+		console.log("all tasks");
+		taskProvider.findAll(function(error, tasks){
+			console.log("find all done ");
+			response.send(tasks);
+		});
+	});	
+    
 });
 
 app.get('/profile', function( request, response ) {
