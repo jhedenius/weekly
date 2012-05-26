@@ -1,15 +1,8 @@
 
-/**
- * Module dependencies.
- */
-
 var express = require('express')
   , routes = require('./routes');
 
-/**
-require.paths.unshift(__dirname + '/../../lib')require.paths.unshift(__dirname + '/../../lib/support/express/lib')
-require.paths.unshift(__dirname + '/../../lib/support/hashlib/build/default')
-*/
+
 var TaskProvider = require('./taskprovider').TaskProvider;
 var UserProvider = require('./userprovider').UserProvider;
 
@@ -30,8 +23,8 @@ app.configure(function(){
   app.use(Session)
   app.use(Logger)
   app.use(require('facebook').Facebook, {
-    apiKey: 'FACEBOOK_API_KEY', 
-    apiSecret: 'FACEBOOK_API_SECRET'
+    apiKey: '238563556250872', 
+    apiSecret: 'cfc48e3978736486bd406fbb1c12bad5'
   })
 });
 
