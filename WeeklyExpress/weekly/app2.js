@@ -2,7 +2,7 @@ var facebook = {
     'appId'         : "238563556250872",
     'appSecret'     : "cfc48e3978736486bd406fbb1c12bad5",
     'scope'         : "email",
-    'callback'      : "http://23.23.186.145/hej"
+    'callback'      : "http://23.23.186.145/"
 }
 
 var express = require('express');
@@ -57,13 +57,7 @@ app.get('/', function( request, response ) {
             }
         });
     } else {
-    	var taskProvider = new TaskProvider('127.0.0.1', 27017, function(){
-    		console.log("all tasks");
-    		taskProvider.findAll(function(error, tasks){
-    			console.log("find all done ");
-    			response.send(tasks);
-    		});
-    	});	
+    	response.send("<html>HEJ</html>");	
     }
 });
 
