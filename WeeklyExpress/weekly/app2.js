@@ -2,7 +2,7 @@ var facebook = {
     'appId'         : "238563556250872",
     'appSecret'     : "cfc48e3978736486bd406fbb1c12bad5",
     'scope'         : "email",
-    'callback'      : "http://23.23.186.145/profile"
+    'callback'      : "http://23.23.186.145/"
 }
 
 var express = require('express');
