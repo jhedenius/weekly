@@ -55,20 +55,20 @@ app.get('/', function( request, response ) {
             if( authenticated ) {
                 request.session.userId = request.getAuthDetails().user.id;
                 console.log("authenticated: " + request.session.userId);
+                response.contentType('application/json');
+            	var taskProvider = new TaskProvider('127.0.0.1', 27017, function(){
+            		console.log("all tasks");
+            		taskProvider.findAll(function(error, tasks){
+            			console.log("find all done ");
+            			response.send(tasks);
+            		});
+            	});
             } else {
             	console.log("not authenticated");
             }
             console.log("authentication error: " + error);
         });
-    }
-    response.contentType('application/json');
-	var taskProvider = new TaskProvider('127.0.0.1', 27017, function(){
-		console.log("all tasks");
-		taskProvider.findAll(function(error, tasks){
-			console.log("find all done ");
-			response.send(tasks);
-		});
-	});	
+    }	
     
 });
 
