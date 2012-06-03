@@ -1,8 +1,16 @@
-
-
-
 exports.index = function(req, res){
-	res.render('login', { title: "Test" });
+    if(!req.session || !req.session.userId ) {
+    	req.authenticate(['facebook'], function(error, authenticated) {
+            if( authenticated ) {
+            	req.session.userId = req.getAuthDetails().user.id;
+                console.log("authenticated: " + req.session.userId);
+                res.render('login', { title: "Test" });
+            } else {
+            	console.log("not authenticated");
+            }
+            console.log("authentication error: " + error);
+        });
+    }
 };
 
 exports.allUsers = function(req, res){
