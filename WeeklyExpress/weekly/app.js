@@ -5,8 +5,8 @@ var express = require('express'),
 	TaskProvider = require('./taskprovider').TaskProvider,
 	UserProvider = require('./userprovider').UserProvider,
 	facebook = {
-	    'appId'         : "238563556250872",
-	    'appSecret'     : "cfc48e3978736486bd406fbb1c12bad5",
+	    'appId'         : "your app id",
+	    'appSecret'     : "your app secret",
 	    'scope'         : "email",
 	    'callback'      : "http://23.23.186.145/"
 	};
